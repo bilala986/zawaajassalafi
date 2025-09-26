@@ -10,203 +10,218 @@
     </head>
     <body class="bg-light">
 
-        <div class="container py-5">
+        <form id="profileForm">
+          <div class="container py-5">
             <div class="row justify-content-center">
-                <div class="col-lg-8">
+              <div class="col-lg-8">
 
-                    <div class="card shadow-sm rounded-3">
-                        <div class="card-body p-4">
+                <div class="card shadow-sm rounded-3">
+                  <div class="card-body p-4">
 
-                            <h2 class="mb-4 text-success text-center">Complete Your Profile</h2>
-                            <p class="text-muted text-center mb-5">Tell us about yourself to help us match you with the right spouse.</p>
+                    <h2 class="mb-4 text-success text-center">Complete Your Profile</h2>
+                    <p class="text-muted text-center mb-5">
+                      Tell us about yourself to help us match you with the right spouse.
+                    </p>
 
-                            <!-- Progress Bar -->
-                            <div class="progress mb-4" style="height: 6px;">
-                                <div id="progress-bar" class="progress-bar bg-success" style="width: 33%;"></div>
-                            </div>
-
-                            <!-- Step 1: About You -->
-                            <div class="form-step active">
-                                <h4 class="mb-3 text-success">Tell Us About Yourself</h4>
-
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Gender</label>
-                                        <select class="form-select" required>
-                                            <option value="">Select...</option>
-                                            <option>Male</option>
-                                            <option>Female</option>
-                                        </select>
-                                        <div class="invalid-feedback">Please select your gender.</div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">Age</label>
-                                        <select class="form-select" id="ageSelect" required></select>
-                                        <div class="invalid-feedback">Please select your age.</div>
-                                    </div>
-                      
-                                    <div class="col-md-6">
-                                        <label class="form-label">Country of Residence</label>
-                                        <select class="form-select" id="countryOfResidenceSelect" required></select>
-                                        <div class="invalid-feedback">Please select your country of residence.</div>
-                                    </div>
-
-                    
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">Ethnicity</label>
-                                        <select class="form-select" id="ethnicitySelect" required></select>
-                                        <div class="invalid-feedback">Please select your ethnicity.</div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">Nationality / Citizenship</label>
-                                        <select class="form-select" id="nationalitySelect" required></select>
-                                        <div class="invalid-feedback">Please select your nationality.</div>
-                                    </div>
-                                    
-                                    <div class="col-md-6">
-                                        <label class="form-label">Marital Status</label>
-                                        <select class="form-select" required>
-                                            <option value="">Select...</option>
-                                            <option>Never Married</option>
-                                            <option>Divorced</option>
-                                            <option>Widowed</option>
-                                        </select>
-                                        <div class="invalid-feedback">Please select your marital status.</div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">Religious Affiliation</label>
-                                        <input type="text" class="form-control" value="Salafi" readonly>
-                                        <div class="form-text text-muted">This platform is exclusively for those upon the Salafi Methodology.</div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">Education Level</label>
-                                        <input type="text" class="form-control" placeholder="e.g. University Graduate" required>
-                                        <div class="invalid-feedback">Please enter your education level.</div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">Occupation</label>
-                                        <input type="text" class="form-control" placeholder="e.g. Administrator" required>
-                                        <div class="invalid-feedback">Please enter your occupation.</div>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex justify-content-end mt-4">
-                                    <button type="button" class="btn btn-success next-step">Next</button>
-                                </div>
-                            </div>
-
-
-                            <!-- Step 2: Preferences -->
-                            <div class="form-step">
-                                <h4 class="mb-3 text-success">Your Preferences</h4>
-
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Preferred Country/Region</label>
-                                        <select id="preferredCountrySelect" class="form-select" required></select>
-                                    </div>
-                                    
-                                    <div class="col-md-6">
-                                        <label class="form-label">Preferred Ethnicity</label>
-                                        <select id="preferredEthnicitySelect" class="form-select">
-                                            <option value="" selected disabled>Select...</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label class="form-label">Preferred Min Age</label>
-                                        <select id="preferredMinAge" class="form-select" required></select>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                      <label class="form-label">Preferred Max Age</label>
-                                      <select id="preferredMaxAge" class="form-select" required></select>
-                                      <div class="invalid-feedback">Max age cannot be less than Min age.</div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">Preferred Marital Status</label>
-                                        <select class="form-select" required>
-                                            <option>No Preference</option>
-                                            <option>Never Married</option>
-                                            <option>Divorced</option>
-                                            <option>Widowed</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">Open to Relocation?</label>
-                                        <select class="form-select" required>
-                                            <option>Yes</option>
-                                            <option>No</option>
-                                            <option>Maybe</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex justify-content-between mt-4">
-                                    <button type="button" class="btn btn-outline-secondary prev-step">Back</button>
-                                    <button type="button" class="btn btn-success next-step">Next</button>
-                                </div>
-                            </div>
-
-                            <!-- Step 3: Additional Information -->
-                            <div class="form-step">
-                                <h4 class="mb-3 text-success">Additional Information</h4>
-
-                                <div class="mb-3">
-                                    <label class="form-label">Describe your relationship with Islam</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">What kind of marriage do you envision?</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">Tell us about yourself (hobbies, interests, etc.)</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">How do you see your role as a spouse?</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">What qualities do you value most in a spouse?</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label class="form-label">Religiosity Preference</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label class="form-label">Any additional notes (health, living arrangements, etc.)</label>
-                                    <textarea class="form-control" rows="3"></textarea>
-                                </div>
-
-                                <div class="d-flex justify-content-between mt-4">
-                                    <button type="button" class="btn btn-outline-secondary prev-step">Back</button>
-                                    <button type="submit" class="btn btn-success">Save Profile</button>
-                                </div>
-                            </div>
-
-                        </div>
+                    <!-- Progress Bar -->
+                    <div class="progress mb-4" style="height: 6px;">
+                      <div id="progress-bar" class="progress-bar bg-success" style="width: 33%;"></div>
                     </div>
 
+                    <!-- Step 1: About You -->
+                    <div class="form-step active">
+                      <h4 class="mb-3 text-success">Tell Us About Yourself</h4>
+
+                      <div class="row g-3">
+                        <div class="col-md-6">
+                          <label class="form-label">Gender</label>
+                          <select class="form-select" name="gender" required>
+                            <option value="">Select...</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                          </select>
+                          <div class="invalid-feedback">Please select your gender.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label">Age</label>
+                          <select class="form-select" id="ageSelect" name="age" required></select>
+                          <div class="invalid-feedback">Please select your age.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label">Country of Residence</label>
+                          <select class="form-select" id="countryOfResidenceSelect" name="countryOfResidence" required></select>
+                          <div class="invalid-feedback">Please select your country of residence.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label">Ethnicity</label>
+                          <select class="form-select" id="ethnicitySelect" name="ethnicity" required></select>
+                          <div class="invalid-feedback">Please select your ethnicity.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label">Nationality / Citizenship</label>
+                          <select class="form-select" id="nationalitySelect" name="nationality" required></select>
+                          <div class="invalid-feedback">Please select your nationality.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label">Marital Status</label>
+                          <select class="form-select" name="maritalStatus" required>
+                            <option value="">Select...</option>
+                            <option>Never Married</option>
+                            <option>Divorced</option>
+                            <option>Widowed</option>
+                          </select>
+                          <div class="invalid-feedback">Please select your marital status.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label">Religious Affiliation</label>
+                          <input type="text" class="form-control" name="religiousAffiliation" value="Salafi" readonly>
+                          <div class="form-text text-muted">
+                            This platform is exclusively for those upon the Salafi Methodology.
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label">Education Level</label>
+                          <input type="text" class="form-control" name="education" placeholder="e.g. University Graduate" required>
+                          <div class="invalid-feedback">Please enter your education level.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label">Occupation</label>
+                          <input type="text" class="form-control" name="occupation" placeholder="e.g. Administrator" required>
+                          <div class="invalid-feedback">Please enter your occupation.</div>
+                        </div>
+                      </div>
+
+                      <div class="d-flex justify-content-end mt-4">
+                        <button type="button" class="btn btn-success next-step">Next</button>
+                      </div>
+                    </div>
+
+                    <!-- Step 2: Preferences -->
+                    <div class="form-step">
+                      <h4 class="mb-3 text-success">Your Preferences</h4>
+
+                      <div class="row g-3">
+                        <div class="col-md-6">
+                          <label class="form-label">Preferred Country/Region</label>
+                          <select id="preferredCountrySelect" class="form-select" name="preferredCountry" required></select>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label">Preferred Ethnicity</label>
+                          <select id="preferredEthnicitySelect" class="form-select" name="preferredEthnicity">
+                            <option value="" selected disabled>Select...</option>
+                          </select>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label class="form-label">Preferred Min Age</label>
+                          <select id="preferredMinAge" class="form-select" name="preferredMinAge" required></select>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label class="form-label">Preferred Max Age</label>
+                          <select id="preferredMaxAge" class="form-select" name="preferredMaxAge" required></select>
+                          <div class="invalid-feedback">Max age cannot be less than Min age.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label">Preferred Marital Status</label>
+                          <select class="form-select" name="preferredMaritalStatus" required>
+                            <option>No Preference</option>
+                            <option>Never Married</option>
+                            <option>Divorced</option>
+                            <option>Widowed</option>
+                          </select>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label">Open to Relocation?</label>
+                          <select class="form-select" name="relocation" required>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Maybe</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="d-flex justify-content-between mt-4">
+                        <button type="button" class="btn btn-outline-secondary prev-step">Back</button>
+                        <button type="button" class="btn btn-success next-step">Next</button>
+                      </div>
+                    </div>
+
+                    <!-- Step 3: Additional Information -->
+                    <div class="form-step">
+                      <h4 class="mb-3 text-success">Additional Information</h4>
+
+                      <div class="mb-3">
+                        <label class="form-label">Describe your relationship with Islam</label>
+                        <textarea class="form-control" name="islamRelation" rows="3" required></textarea>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">What kind of marriage do you envision?</label>
+                        <textarea class="form-control" name="marriageVision" rows="3" required></textarea>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">Tell us about yourself (hobbies, interests, etc.)</label>
+                        <textarea class="form-control" name="hobbies" rows="3" required></textarea>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">How do you see your role as a spouse?</label>
+                        <textarea class="form-control" name="spouseRole" rows="3" required></textarea>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">What qualities do you value most in a spouse?</label>
+                        <textarea class="form-control" name="spouseQualities" rows="3" required></textarea>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">Religiosity Preference</label>
+                        <textarea class="form-control" name="religiosityPreference" rows="3" required></textarea>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">Scholars you take from (optional)</label>
+                        <textarea class="form-control" name="scholars" rows="3" placeholder="e.g. Shaykh al-Albani, Shaykh Ibn Baz"></textarea>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">Texts / Mutoon studied (optional)</label>
+                        <textarea class="form-control" name="textsStudied" rows="3" placeholder="e.g. Kitab at-Tawheed, Al-Arba'een an-Nawawiyyah"></textarea>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">Any additional notes (health, living arrangements, etc.)</label>
+                        <textarea class="form-control" name="additionalNotes" rows="3"></textarea>
+                      </div>
+
+                      <div class="d-flex justify-content-between mt-4">
+                        <button type="button" class="btn btn-outline-secondary prev-step">Back</button>
+                        <button type="submit" class="btn btn-success">Save Profile</button>
+                      </div>
+                    </div>
+
+
+                  </div>
                 </div>
+
+              </div>
             </div>
-        </div>
+          </div>
+        </form>
+
 
         <!-- Location Permission Modal -->
         <div class="modal fade" id="locationModal" tabindex="-1" aria-labelledby="locationModalLabel" aria-hidden="true">
@@ -233,6 +248,7 @@
 
         <!-- Scripts -->
         <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/index-script.js"></script>
         <script src="js/profile-setup-script.js"></script>
     </body>
 </html>

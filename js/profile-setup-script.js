@@ -196,4 +196,59 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   showStep(currentStep);
+
+
+
+
+
+
+
+
+
+
+    const form = document.getElementById("profileForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // prevent page reload
+
+      // Collect form data automatically
+      const formData = new FormData(form);
+
+      // Convert to plain object
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      console.log("Submitting profile data:", data);
+
+      // Send to PHP backend
+      fetch("assets/php/save-profile.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((response) => {
+          if (response.success) {
+            alert("✅ Profile saved successfully!");
+          } else {
+            alert("❌ Error saving profile: " + response.message);
+          }
+        })
+        .catch((err) => {
+          console.error("Request failed:", err);
+          alert("Something went wrong. Please try again.");
+        });
+    });
+
+
+
+
+
+
+
+
+
+
 });

@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     const signupForm = document.querySelector("#signupModal form");
     const emailInput = document.getElementById("signupEmail");
@@ -25,12 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!/^\S+@\S+\.\S+$/.test(email)) {
             emailInput.classList.add("is-invalid");
             valid = false;
-        } else {
-            // Optionally check if email actually exists using an API
-            // Example: Using https://isitarealemail.com or similar services
-            // Here we'll just simulate a check:
-            // const emailExists = await checkEmailExists(email);
-            // if (!emailExists) { emailInput.classList.add("is-invalid"); valid = false; }
         }
 
         // Validate password strength
@@ -45,9 +38,30 @@ document.addEventListener("DOMContentLoaded", () => {
             valid = false;
         }
 
-        // ✅ If all valid, redirect to profile-setup.html
+        // ✅ If all valid, send data to backend
         if (valid) {
-            window.location.href = "profile-setup.html";
+            try {
+                const response = await fetch("assets/php/signup.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const result = await response.json();
+                console.log("Signup response:", result);
+
+                if (result.success) {
+                    alert("Sign up successful!");
+                    // Save user ID locally so we can link profile later
+                    localStorage.setItem("user_id", result.user_id);
+                    window.location.href = "profile-setup.html";
+                } else {
+                    alert("Sign up failed: " + result.message);
+                }
+            } catch (err) {
+                console.error("Signup request failed:", err);
+                alert("Something went wrong. Please try again.");
+            }
         }
     });
 });
