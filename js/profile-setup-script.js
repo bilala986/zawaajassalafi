@@ -209,20 +209,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("profileForm");
 
     form.addEventListener("submit", function (e) {
-      e.preventDefault(); // prevent page reload
+      e.preventDefault();
 
-      // Collect form data automatically
       const formData = new FormData(form);
-
-      // Convert to plain object
       const data = {};
       formData.forEach((value, key) => {
         data[key] = value;
       });
 
+      // Include user_id from signup
+      const userId = localStorage.getItem("user_id");
+      data.user_id = userId;
+
       console.log("Submitting profile data:", data);
 
-      // Send to PHP backend
       fetch("assets/php/save-profile.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -232,6 +232,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((response) => {
           if (response.success) {
             alert("✅ Profile saved successfully!");
+            // Redirect to dashboard
+            window.location.href = "dashboard.html";
           } else {
             alert("❌ Error saving profile: " + response.message);
           }
@@ -241,6 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
           alert("Something went wrong. Please try again.");
         });
     });
+
 
 
 

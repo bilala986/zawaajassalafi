@@ -1,11 +1,11 @@
 <?php
 header("Content-Type: application/json");
 
-// Database connection (adjust with your Namecheap DB credentials)
+// Database connection
 $host = "localhost";
-$dbname = "your_database_name";
-$username = "your_db_username";
-$password = "your_db_password";
+$dbname = "zawaajassalafi_details"; // your database
+$username = "root";                  // usually root on localhost
+$password = "";                      // usually empty on localhost
 
 $conn = new mysqli($host, $username, $password, $dbname);
 
@@ -22,8 +22,16 @@ if (!$data) {
     exit;
 }
 
-// Map camelCase (from frontend) → snake_case (DB schema)
+// Get user_id from frontend localStorage (sent via JS)
+$user_id = $data["user_id"] ?? null;
+if (!$user_id) {
+    echo json_encode(["success" => false, "message" => "User ID missing."]);
+    exit;
+}
+
+// Map camelCase → snake_case
 $mappedData = [
+    "user_id" => $user_id,
     "gender" => $data["gender"] ?? null,
     "age" => $data["age"] ?? null,
     "country_of_residence" => $data["countryOfResidence"] ?? null,
@@ -53,16 +61,30 @@ $mappedData = [
     "additional_notes" => $data["additionalNotes"] ?? null,
 ];
 
+
+// Check if user_id exists in users_auth
+$checkStmt = $conn->prepare("SELECT id FROM users_auth WHERE id = ?");
+$checkStmt->bind_param("i", $user_id);
+$checkStmt->execute();
+$checkStmt->store_result();
+
+if ($checkStmt->num_rows === 0) {
+    echo json_encode(["success" => false, "message" => "Invalid user ID."]);
+    exit;
+}
+
+$checkStmt->close();
+
+
 // Prepare SQL
 $stmt = $conn->prepare("
-    INSERT INTO users (
-        gender, age, country_of_residence, ethnicity, nationality, marital_status,
+    INSERT INTO user_profiles (
+        user_id, gender, age, country_of_residence, ethnicity, nationality, marital_status,
         education_level, occupation, preferred_country, preferred_ethnicity,
         preferred_min_age, preferred_max_age, preferred_marital_status, relocation_preference,
         islam_relation, marriage_vision, hobbies, spouse_role, spouse_qualities,
         religiosity_preference, scholars, texts_studied, additional_notes
-    )
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 ");
 
 if (!$stmt) {
@@ -72,7 +94,8 @@ if (!$stmt) {
 
 // Bind parameters
 $stmt->bind_param(
-    "sissssssssiissssssssss",
+    "issssssssiisssssssssssss",
+    $mappedData["user_id"],
     $mappedData["gender"],
     $mappedData["age"],
     $mappedData["country_of_residence"],

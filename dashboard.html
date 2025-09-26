@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zawaaj As-Salafi – Dashboard</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+                <div class="card shadow-sm rounded-3 text-center">
+                    <div class="card-body p-5">
+                        <h2 class="text-success mb-4">Welcome to Your Dashboard!</h2>
+                        <p class="mb-4">You have successfully completed your profile setup.</p>
+                        <p>Your user ID is: <span id="userIdDisplay"></span></p>
+
+                        <a href="profile-setup.html" class="btn btn-outline-success mt-3">Edit Profile</a>
+                        <a href="#" class="btn btn-success mt-3" id="logoutBtn">Log Out</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Display user ID from localStorage
+        const userIdDisplay = document.getElementById("userIdDisplay");
+        const userId = localStorage.getItem("user_id");
+        if (userId) {
+            userIdDisplay.textContent = userId;
+        } else {
+            userIdDisplay.textContent = "Unknown";
+        }
+
+        // Logout button clears localStorage
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            localStorage.clear();
+            alert("You have been logged out.");
+            window.location.href = "index.html";
+        });
+    </script>
+
+</body>
+</html>
