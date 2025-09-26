@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const emailInput = document.getElementById("signupEmail");
     const passwordInput = document.getElementById("signupPassword");
     const confirmPasswordInput = document.getElementById("signupConfirmPassword");
+    const loginForm = document.querySelector("#loginModal form");
+    const loginEmailInput = document.getElementById("loginEmail");
+    const loginPasswordInput = document.getElementById("loginPassword");
+    const rememberMeCheckbox = document.getElementById("rememberMe");
+
 
     // Basic strong password regex (min 8 chars, 1 uppercase, 1 lowercase, 1 number)
     const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
@@ -64,4 +69,52 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+    
+    
+    
+    loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const email = loginEmailInput.value.trim();
+        const password = loginPasswordInput.value.trim();
+        const rememberMe = rememberMeCheckbox.checked;
+
+        if (!email || !password) {
+            alert("Please enter email and password.");
+            return;
+        }
+
+        try {
+            const response = await fetch("assets/php/login.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            });
+
+            const result = await response.json();
+            console.log("Login response:", result);
+
+            if (result.success) {
+                // Save user ID and token
+                if (rememberMe) {
+                    localStorage.setItem("user_id", result.user_id);       // persists across browser sessions
+                    localStorage.setItem("login_token", result.token);     // token persists
+                } else {
+                    sessionStorage.setItem("user_id", result.user_id);     // cleared when browser closes
+                    sessionStorage.setItem("login_token", result.token);   // token cleared on close
+                }
+
+                alert("Login successful!");
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Login failed: " + result.message);
+            }
+        } catch (err) {
+            console.error("Login request failed:", err);
+            alert("Something went wrong. Please try again.");
+        }
+    });
+    
+    
+    
 });
