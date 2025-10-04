@@ -16,12 +16,17 @@ require_login('../login.html'); // Redirect to login if not logged in
         <div class="container py-5">
             <div class="card shadow mx-auto" style="max-width: 900px;">
                 <div class="card-body">
-                    <h3 class="card-title text-center mb-4">Profile Setup</h3>
+                    <h3 class="card-title text-center mb-1">Profile Setup</h3>
+                    <p class="text-center text-muted mb-4" style="font-size: 0.9rem;">
+                        Answer the questions to help us find the right spouse for you.
+                    </p>
                     <form id="profileSetupForm">
 
                         <!-- Progress Bar -->
-                        <div class="progress mb-4">
-                            <div id="profileSetupProgress" class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress mb-4" style="height: 8px;">
+                            <div id="profileSetupProgress" class="progress-bar bg-success" role="progressbar"
+                                style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            </div>
                         </div>
 
                         <!-- STEP 1: Gender -->
@@ -35,84 +40,87 @@ require_login('../login.html'); // Redirect to login if not logged in
                                     <option value="female">Female</option>
                                 </select>
                             </div>
-                            <button type="button" class="btn btn-primary" id="nextStep1">Next</button>
+                            <button type="button" class="btn btn-success" id="nextStep1">Next</button>
                         </div>
 
                         <!-- STEP 2: About Yourself -->
                         <div class="step d-none" id="step2">
                             <h4>Step 2: About Yourself</h4>
+
                             <div class="row g-3">
-                                <div class="col-md-3">
+                                <!-- Age -->
+                                <div class="col-md-6">
                                     <label class="form-label">Age</label>
                                     <input type="number" class="form-control" name="age" min="18" max="100" required>
                                 </div>
-                                <div class="col-md-3">
-                                    <label class="form-label">Marital Status</label>
-                                    <select class="form-select" name="marital_status">
-                                        <option value="" selected disabled>Select</option>
-                                        <option value="single">Single</option>
-                                        <option value="divorced">Divorced</option>
-                                        <option value="widowed">Widowed</option>
+
+                                <!-- Country of Residence -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Country of Residence</label>
+                                    <select class="form-select" id="countryResidenceSelect" name="country_residence" required>
+                                        <option value="" selected disabled>Loading...</option>
                                     </select>
                                 </div>
-                                <div class="col-md-3">
-                                    <label class="form-label">Religious Affiliation</label>
-                                    <input type="text" class="form-control" value="Salafi" readonly>
+
+                                <!-- Ethnicity -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Ethnicity</label>
+                                    <select class="form-select" id="ethnicitySelect" name="ethnicity">
+                                        <option value="" selected disabled>Loading...</option>
+                                    </select>
+                                    <div class="form-check mt-1">
+                                        <input class="form-check-input" type="checkbox" id="ethnicityMultiple">
+                                        <label class="form-check-label" for="ethnicityMultiple">I have multiple ethnicities</label>
+                                    </div>
+                                    <div class="mt-2 d-none" id="ethnicityExtraContainer"></div>
                                 </div>
-                            </div>
 
-                            <!-- Ethnicity / Nationality / Languages (with multiple options) -->
-                            <?php
-                            $multiFields = ['ethnicity', 'nationality', 'languages'];
-                            foreach ($multiFields as $field) {
-                                echo '<div class="mb-3 mt-3">';
-                                echo '<label class="form-label">'.ucfirst($field).'</label>';
-                                echo '<select class="form-select" name="'.$field.'">';
-                                echo '<option value="" selected disabled>Select '.$field.'</option>';
-                                if ($field === 'ethnicity') {
-                                    echo '<option value="arab">Arab</option><option value="asian">Asian</option><option value="african">African</option><option value="european">European</option>';
-                                } elseif ($field === 'nationality') {
-                                    echo '<option value="saudi">Saudi</option><option value="egyptian">Egyptian</option><option value="pakistani">Pakistani</option><option value="indian">Indian</option>';
-                                } elseif ($field === 'languages') {
-                                    echo '<option value="arabic">Arabic</option><option value="english">English</option><option value="french">French</option>';
-                                }
-                                echo '</select>';
-                                echo '<div class="form-check mt-2">';
-                                echo '<input class="form-check-input" type="checkbox" id="'.$field.'Multiple">';
-                                echo '<label class="form-check-label" for="'.$field.'Multiple">I have multiple '.$field.'</label>';
-                                echo '</div>';
-                                echo '<div class="mt-2 d-none" id="'.$field.'ExtraContainer"></div>';
-                                echo '</div>';
-                            }
-                            ?>
+                                <!-- Nationality -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Nationality</label>
+                                    <select class="form-select" id="nationalitySelect" name="nationality">
+                                        <option value="" selected disabled>Loading...</option>
+                                    </select>
+                                    <div class="form-check mt-1">
+                                        <input class="form-check-input" type="checkbox" id="nationalityMultiple">
+                                        <label class="form-check-label" for="nationalityMultiple">I have multiple nationalities</label>
+                                    </div>
+                                    <div class="mt-2 d-none" id="nationalityExtraContainer"></div>
+                                </div>
 
-                            <!-- Female-specific dress -->
-                            <div class="mb-3 d-none" id="femaleDressDiv">
-                                <label class="form-label">How do you dress?</label>
-                                <select class="form-select" name="dress">
-                                    <option value="" selected disabled>Select</option>
-                                    <option value="niqab">Niqab</option>
-                                    <option value="hijab_abaya">Hijab & Abayah</option>
-                                    <option value="hijab_normal">Hijab & Normal Clothes</option>
-                                    <option value="no_hijab">No Hijab</option>
-                                </select>
-                            </div>
+                                <!-- Languages -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Languages</label>
+                                    <select class="form-select" id="languagesSelect" name="languages">
+                                        <option value="" selected disabled>Loading...</option>
+                                    </select>
+                                    <div class="form-check mt-1">
+                                        <input class="form-check-input" type="checkbox" id="languagesMultiple">
+                                        <label class="form-check-label" for="languagesMultiple">I speak multiple languages</label>
+                                    </div>
+                                    <div class="mt-2 d-none" id="languagesExtraContainer"></div>
+                                </div>
 
-                            <!-- Additional personal info -->
-                            <div class="row g-3 mt-3">
-                                <div class="col-md-3">
+                                <!-- Education -->
+                                <div class="col-md-6">
                                     <label class="form-label">Education (Optional)</label>
                                     <input type="text" class="form-control" name="education">
                                 </div>
-                                <div class="col-md-3">
+
+                                <!-- Occupation -->
+                                <div class="col-md-6">
                                     <label class="form-label">Occupation</label>
                                     <input type="text" class="form-control" name="occupation" placeholder="Leave blank if private">
                                 </div>
-                                <div class="col-md-3">
+
+                                <!-- Income -->
+                                <div class="col-md-6">
                                     <label class="form-label">Income</label>
                                     <input type="number" class="form-control" name="income" placeholder="Optional">
                                 </div>
-                                <div class="col-md-3">
+
+                                <!-- Children -->
+                                <div class="col-md-6">
                                     <label class="form-label">Children?</label>
                                     <select class="form-select" name="children">
                                         <option value="" selected disabled>Select</option>
@@ -120,18 +128,21 @@ require_login('../login.html'); // Redirect to login if not logged in
                                         <option value="yes">Yes</option>
                                     </select>
                                 </div>
-                            </div>
 
-                            <div class="row g-3 mt-3">
-                                <div class="col-md-3">
+                                <!-- Height -->
+                                <div class="col-md-6">
                                     <label class="form-label">Height (cm)</label>
                                     <input type="number" class="form-control" name="height">
                                 </div>
-                                <div class="col-md-3">
+
+                                <!-- Weight -->
+                                <div class="col-md-6">
                                     <label class="form-label">Weight (kg)</label>
                                     <input type="number" class="form-control" name="weight">
                                 </div>
-                                <div class="col-md-3">
+
+                                <!-- Pray -->
+                                <div class="col-md-6">
                                     <label class="form-label">Do you pray 5x a day?</label>
                                     <select class="form-select" name="pray">
                                         <option value="" selected disabled>Select</option>
@@ -139,8 +150,10 @@ require_login('../login.html'); // Redirect to login if not logged in
                                         <option value="no">No</option>
                                     </select>
                                 </div>
-                                <div class="col-md-3">
-                                    <label class="form-label">Arabic fluency</label>
+
+                                <!-- Arabic Fluency -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Arabic Fluency</label>
                                     <select class="form-select" name="arabic">
                                         <option value="" selected disabled>Select</option>
                                         <option value="basic">Basic</option>
@@ -148,11 +161,24 @@ require_login('../login.html'); // Redirect to login if not logged in
                                         <option value="fluent">Fluent</option>
                                     </select>
                                 </div>
+
+                                <!-- Female-only Dress -->
+                                <div class="col-md-6 d-none" id="femaleDressDiv">
+                                    <label class="form-label">How do you dress?</label>
+                                    <select class="form-select" name="dress">
+                                        <option value="" selected disabled>Select</option>
+                                        <option value="niqab">Niqab</option>
+                                        <option value="hijab_abaya">Hijab & Abayah</option>
+                                        <option value="hijab_normal">Hijab & Normal Clothes</option>
+                                        <option value="no_hijab">No Hijab</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <button type="button" class="btn btn-secondary me-2 mt-3" id="prevStep2">Previous</button>
-                            <button type="button" class="btn btn-primary mt-3" id="nextStep2">Next</button>
+                            <button type="button" class="btn btn-success mt-3" id="nextStep2">Next</button>
                         </div>
+
 
                         <!-- STEP 3: Preferences -->
                         <div class="step d-none" id="step3">
@@ -230,7 +256,7 @@ require_login('../login.html'); // Redirect to login if not logged in
                             </div>
 
                             <button type="button" class="btn btn-secondary me-2 mt-3" id="prevStep3">Previous</button>
-                            <button type="button" class="btn btn-primary mt-3" id="nextStep3">Next</button>
+                            <button type="button" class="btn btn-success mt-3" id="nextStep3">Next</button>
                         </div>
 
                         <!-- STEP 4: Additional Information -->

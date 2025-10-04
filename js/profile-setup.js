@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Update progress bar
-        const percent = ((index + 1) / steps.length) * 100;
+        const percent = (index / (steps.length - 1)) * 100;
         progressBar.style.width = percent + '%';
         progressBar.setAttribute('aria-valuenow', percent);
     };
@@ -91,6 +91,62 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+    
+    // Load Countries and Languages from JSON
+    function loadSelectOptions() {
+        // Load Countries (for Country of Residence, Ethnicity, Nationality)
+        fetch('../json/countries.json')
+            .then(res => res.json())
+            .then(countries => {
+                // Sort alphabetically by name
+                countries.sort((a, b) => a.name.localeCompare(b.name));
+
+                populateSelect('countryResidenceSelect', countries.map(c => ({
+                    value: c.iso2,
+                    label: `${c.name}`
+                })));
+
+                populateSelect('ethnicitySelect', countries.map(c => ({
+                    value: c.name,
+                    label: c.name
+                })));
+
+                populateSelect('nationalitySelect', countries.map(c => ({
+                    value: c.nationality || c.name,
+                    label: c.nationality || c.name
+                })));
+            });
+
+        // Load Languages (for Languages)
+        fetch('../json/languages.json')
+            .then(res => res.json())
+            .then(languages => {
+                const languageArray = Object.entries(languages).map(([code, name]) => ({
+                    value: code,
+                    label: name
+                }));
+
+                // Sort alphabetically
+                languageArray.sort((a, b) => a.label.localeCompare(b.label));
+
+                populateSelect('languagesSelect', languageArray);
+            });
+    }
+
+    function populateSelect(selectId, items) {
+        const select = document.getElementById(selectId);
+        select.innerHTML = '<option value="" selected disabled>Select</option>';
+        items.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.value;
+            option.textContent = item.label;
+            select.appendChild(option);
+        });
+    }
+
+    loadSelectOptions();
+
+
 
     // Form submit
     const form = document.getElementById('profileSetupForm');
