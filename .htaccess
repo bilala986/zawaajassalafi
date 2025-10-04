@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# ✅ Allow URLs without .html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.+)$ $1.html [L,QSA]
+
+# ✅ Set default page
+DirectoryIndex index.html

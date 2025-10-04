@@ -1,0 +1,96 @@
+questions to ask
+
+
+step 1 - gender
+
+gender
+
+
+
+********IF MALE***********
+
+step 2 - about yourself
+
+age
+ethnicity - multiple
+nationality - multiple
+languages - multiple
+marital status
+religious affiliation - salafi only (user cannot edit)
+education - optional
+occupation - have an option if they do not want to share
+income
+children?
+height
+weight
+do you pray 5x a day
+how strong is your arabic
+
+
+
+
+
+step 3 - your preferences
+
+preferred country/region - multiple (option for any)
+preferred ethnicity - multiple (option for all)
+preferred min age (min age cannot be more than the max age)
+preferred max age (max age cannot be less than the min age)
+preferred marital status
+open to relocation
+preferred fluency of arabic
+
+
+
+
+step 4 - additional information
+
+describe relationship with islam
+what kind of marriage you envision
+tell us about yourself, hobbies, etc.
+how you see your role as a spouse
+what qualities you value most in a spouse
+how close would you want your spouse to be to islam. explain
+scholars you take from (optional)
+text/mutton studied (optional)
+additional notes (optional)
+
+
+
+
+
+
+
+
+
+********IF FEMALE***********
+
+
+
+step 2 - about yourself
+
+age
+ethnicity - multiple
+nationality - multiple
+languages - multiple
+marital status
+religious affiliation - salafi only (user cannot edit)
+education - optional
+occupation - have an option if they do not want to share
+income
+children?
+height
+weight
+do you pray 5x a day
+how strong is your arabic
+how do you dress - options: niqab, hijab & abayah, hijab & normal clothes, no hijab
+
+
+
+
+
+
+
+
+
+

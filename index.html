@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Zawaaj As-Salafi</title>
+        
+        <!-- Google Font: Reem Kufi -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&display=swap" rel="stylesheet">
+        
+        <!-- Local Bootstrap CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Local Font Awesome CSS -->
+        <link rel="stylesheet" href="css/all.min.css">
+        <!-- Custom Styles -->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body class="bg-light">
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-success arabic-logo" href="index.html">زواج السلفي</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#how-it-works">Guide</a></li>
+                    </ul>
+                    <div class="ms-3">
+                        <a href="login" class="btn btn-outline-success me-2">Log In</a>
+                        <a href="signup" class="btn btn-success">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Hero Section -->
+        <section class="hero text-white text-center d-flex align-items-center justify-content-center">
+            <div class="container">
+                <h1 class="display-4 fw-bold">Marriage Upon the Sunnah</h1>
+                <p class="lead">A safe, authentic, and professional matrimonial platform for Salafis worldwide.</p>
+
+                <!-- Quranic Verse (hidden on small screens) -->
+                <p class="fs-5 text-white fst-italic d-none d-md-block mb-3">
+                    وَأَنْكِحُوا الْأَيَامَىٰ مِنكُمْ وَالصَّالِحِينَ مِنْ عِبَادِكُمْ وَإِمَائِكُمْ
+                </p>
+                <p class="d-none d-md-block text-white mb-4">
+                    “Marry the unmarried among you and the righteous among your male and female servants…” (Quran 24:32)
+                </p>
+
+                <button class="btn btn-light btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#signupModal">
+                    Get Started
+                </button>
+            </div>
+        </section>
+
+
+        <!-- Features Section -->
+        <section id="features" class="py-5 bg-white text-white">
+            <div class="container text-center">
+                <h2 class="mb-4 text-success">Why Choose Zawaaj As-Salafi?</h2>
+                <div class="row g-4 justify-content-center">
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 rounded-3 shadow-sm text-white feature-card">
+                            <div class="card-body">
+                                <div class="fs-1 mb-3">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <h5 class="card-title">Privacy Focused</h5>
+                                <p class="card-text">Sisters’ photos are hidden by default with full control over who sees them.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 rounded-3 shadow-sm text-white feature-card">
+                            <div class="card-body">
+                                <div class="fs-1 mb-3">
+                                    <i class="fas fa-scroll"></i>
+                                </div>
+                                <h5 class="card-title">Authentic Profiles</h5>
+                                <p class="card-text">Profiles verified for sincerity, seriousness, and adherence to the Sunnah.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 rounded-3 shadow-sm text-white feature-card">
+                            <div class="card-body">
+                                <div class="fs-1 mb-3">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <h5 class="card-title">Guardian Involvement</h5>
+                                <p class="card-text">Wali approval and chaperoned conversations for sisters’ protection.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 rounded-3 shadow-sm text-white feature-card">
+                            <div class="card-body">
+                                <div class="fs-1 mb-3">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <h5 class="card-title">Global Reach</h5>
+                                <p class="card-text">Connect with sincere Salafi Muslims worldwide, across different cultures.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 rounded-3 shadow-sm text-white feature-card">
+                            <div class="card-body">
+                                <div class="fs-1 mb-3">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h5 class="card-title">Fast & Simple</h5>
+                                <p class="card-text">Quick registration and easy-to-use interface designed for all ages.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- How It Works / Key Benefits Section -->
+        <section id="how-it-works" class="py-5 bg-white">
+            <div class="container text-center">
+
+                <!-- Quranic Verse -->
+                <p class="fs-5 mb-4 text-success fst-italic">
+                    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+                </p>
+                <p class="lead mb-5">“And of His signs is that He created for you from yourselves mates that you may find tranquility in them, and He placed between you affection and mercy.” (Quran 30:21)</p>
+
+                <h2 class="mb-4 text-success">How Zawaaj As-Salafi Works</h2>
+                <p class="lead mb-5">A simple, safe, and Sunnah-compliant way to find a spouse, with privacy and guardian involvement.</p>
+
+                <div class="row g-4 justify-content-center text-start">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="p-4 rounded-3 bg-light text-center h-100">
+                            <div class="fs-1 text-success mb-3">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h5>Create Profile</h5>
+                            <p>Register with verified details to ensure sincerity and seriousness.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="p-4 rounded-3 bg-light text-center h-100">
+                            <div class="fs-1 text-success mb-3">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h5>Search Matches</h5>
+                            <p>Use clear filters and preferences to find compatible brothers or sisters.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="p-4 rounded-3 bg-light text-center h-100">
+                            <div class="fs-1 text-success mb-3">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h5>Connect Safely</h5>
+                            <p>Chaperoned or Wali-approved messaging for sisters to communicate safely.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="p-4 rounded-3 bg-light text-center h-100">
+                            <div class="fs-1 text-success mb-3">
+                                <i class="fas fa-ring"></i>
+                            </div>
+                            <h5>Marriage Discussion</h5>
+                            <p>Proceed to serious discussions and arrange the marriage upon the Sunnah.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Call-to-Action -->
+                <button class="btn btn-success btn-lg px-4" data-bs-toggle="modal" data-bs-target="#signupModal">
+                    Join Now & Start Your Journey
+                </button>
+
+            </div>
+        </section>
+
+
+
+        <!-- Footer -->
+        <footer class="bg-success text-white text-center py-3">
+            <div class="container">
+                <p class="mb-0">&copy; 2025 Zawaaj As-Salafi | All Rights Reserved</p>
+            </div>
+        </footer>
+
+        <!-- Local Bootstrap JS -->
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/index-script.js"></script>
+    </body>
+</html>
+
+
+
+

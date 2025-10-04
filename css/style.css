@@ -1,0 +1,46 @@
+/* style.css */
+.arabic-logo {
+  font-family: 'Reem Kufi', sans-serif;
+  font-weight: 600;
+  font-size: 1.6rem;
+  word-spacing: 5px;
+}
+
+
+/* Hero Section */
+.hero {
+  min-height: 70vh;
+  background: linear-gradient(rgba(10, 111, 74, 0.8), rgba(10, 111, 74, 0.8)),
+              url('../img/hero-bg.png') center/cover no-repeat;
+}
+
+
+/* Slightly faded green for feature cards */
+.feature-card {
+  background-color: #3cb371; /* semi-faded green with 80% opacity */
+  color: white;                /* keep text white */
+  border: none;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.12); /* bottom-right shadow */
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 6px 6px 14px rgba(0,0,0,0.18); /* stronger bottom-right shadow */
+}
+
+
+/* Sign-up Form */
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+}
+
+.is-invalid {
+  border-color: #dc3545 !important;
+  background-color: #f8d7da !important;
+}
+

@@ -1,0 +1,68 @@
+/* Arabic logo */
+.arabic-logo {
+  font-family: 'Reem Kufi', sans-serif;
+  font-weight: 600;
+  font-size: 1.6rem;
+  word-spacing: 5px;
+}
+
+/* Sidebar hover effects */
+.sidebar-nav li a:not(.logout-link):hover {
+    background-color: #e6f4ea; /* light green */
+    border-left: 4px solid #198754; /* green line */
+}
+
+.sidebar-nav li a.logout-link:hover {
+    background-color: #fbeaea; /* light red */
+    border-left: 4px solid #dc3545; /* red line */
+}
+
+/* Active sidebar link */
+.sidebar-nav li a.active {
+    background-color: #e6f4ea;
+    border-left: 4px solid #198754;
+}
+
+/* Optional: spacing for icons */
+.sidebar-nav li a i {
+    margin-right: 0.5rem;
+}
+
+/* Normal sidebar links (all except logout) */
+nav.bg-white .nav-link {
+    color: #333;
+    border-left: 4px solid transparent;
+    transition: all 0.2s;
+}
+
+/* Hover for normal links */
+nav.bg-white .nav-link:not(.logout-link):hover {
+    background-color: #e6f4ea; /* light green */
+    border-left: 4px solid #198754; /* green line */
+    color: #198754 !important;
+}
+
+/* Active link */
+nav.bg-white .nav-link.active {
+    background-color: #e6f4ea;
+    border-left: 4px solid #198754;
+    color: #198754 !important;
+}
+
+/* Logout link */
+nav.bg-white .nav-link.logout-link {
+    margin-top: auto; /* push to bottom */
+    color: #333;
+}
+
+/* Hover for logout */
+nav.bg-white .nav-link.logout-link:hover {
+    background-color: #fbeaea; /* light red */
+    border-left: 4px solid #dc3545; /* red line */
+    color: #dc3545 !important;
+}
+
+/* Icon spacing */
+nav.bg-white .nav-link i {
+    margin-right: 0.5rem;
+}
