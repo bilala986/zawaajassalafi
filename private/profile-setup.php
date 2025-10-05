@@ -50,8 +50,8 @@ require_login('../login.html'); // Redirect to login if not logged in
                             <div class="row g-3">
                                 <!-- Age -->
                                 <div class="col-md-6">
-                                    <label class="form-label">Age</label>
-                                    <input type="number" class="form-control" name="age" min="18" max="100" required>
+                                    <label class="form-label">Date of Birth</label>
+                                    <input type="date" class="form-control" name="dob" max="<?php echo date('Y-m-d', strtotime('-18 years')); ?>" required>
                                 </div>
 
                                 <!-- Country of Residence -->
@@ -65,7 +65,7 @@ require_login('../login.html'); // Redirect to login if not logged in
                                 <!-- Ethnicity -->
                                 <div class="col-md-6">
                                     <label class="form-label">Ethnicity</label>
-                                    <select class="form-select" id="ethnicitySelect" name="ethnicity">
+                                    <select class="form-select" id="ethnicitySelect" name="ethnicity" required>
                                         <option value="" selected disabled>Loading...</option>
                                     </select>
                                     <div class="form-check mt-1">
@@ -78,7 +78,7 @@ require_login('../login.html'); // Redirect to login if not logged in
                                 <!-- Nationality -->
                                 <div class="col-md-6">
                                     <label class="form-label">Nationality</label>
-                                    <select class="form-select" id="nationalitySelect" name="nationality">
+                                    <select class="form-select" id="nationalitySelect" name="nationality" required required>
                                         <option value="" selected disabled>Loading...</option>
                                     </select>
                                     <div class="form-check mt-1">
@@ -91,7 +91,7 @@ require_login('../login.html'); // Redirect to login if not logged in
                                 <!-- Languages -->
                                 <div class="col-md-6">
                                     <label class="form-label">Languages</label>
-                                    <select class="form-select" id="languagesSelect" name="languages">
+                                    <select class="form-select" id="languagesSelect" name="languages" required required>
                                         <option value="" selected disabled>Loading...</option>
                                     </select>
                                     <div class="form-check mt-1">
@@ -122,7 +122,7 @@ require_login('../login.html'); // Redirect to login if not logged in
                                 <!-- Children -->
                                 <div class="col-md-6">
                                     <label class="form-label">Children?</label>
-                                    <select class="form-select" name="children">
+                                    <select class="form-select" name="children" required>
                                         <option value="" selected disabled>Select</option>
                                         <option value="none">None</option>
                                         <option value="yes">Yes</option>
@@ -132,19 +132,19 @@ require_login('../login.html'); // Redirect to login if not logged in
                                 <!-- Height -->
                                 <div class="col-md-6">
                                     <label class="form-label">Height (cm)</label>
-                                    <input type="number" class="form-control" name="height">
+                                    <input type="number" class="form-control" name="height" required>
                                 </div>
 
                                 <!-- Weight -->
                                 <div class="col-md-6">
                                     <label class="form-label">Weight (kg)</label>
-                                    <input type="number" class="form-control" name="weight">
+                                    <input type="number" class="form-control" name="weight" required>
                                 </div>
 
                                 <!-- Pray -->
                                 <div class="col-md-6">
                                     <label class="form-label">Do you pray 5x a day?</label>
-                                    <select class="form-select" name="pray">
+                                    <select class="form-select" name="pray" required>
                                         <option value="" selected disabled>Select</option>
                                         <option value="yes">Yes</option>
                                         <option value="no">No</option>
@@ -154,7 +154,7 @@ require_login('../login.html'); // Redirect to login if not logged in
                                 <!-- Arabic Fluency -->
                                 <div class="col-md-6">
                                     <label class="form-label">Arabic Fluency</label>
-                                    <select class="form-select" name="arabic">
+                                    <select class="form-select" name="arabic" required>
                                         <option value="" selected disabled>Select</option>
                                         <option value="basic">Basic</option>
                                         <option value="intermediate">Intermediate</option>
@@ -165,7 +165,7 @@ require_login('../login.html'); // Redirect to login if not logged in
                                 <!-- Female-only Dress -->
                                 <div class="col-md-6 d-none" id="femaleDressDiv">
                                     <label class="form-label">How do you dress?</label>
-                                    <select class="form-select" name="dress">
+                                    <select class="form-select" name="dress" required>
                                         <option value="" selected disabled>Select</option>
                                         <option value="niqab">Niqab</option>
                                         <option value="hijab_abaya">Hijab & Abayah</option>
@@ -184,9 +184,10 @@ require_login('../login.html'); // Redirect to login if not logged in
                         <div class="step d-none" id="step3">
                             <h4>Step 3: Your Preferences</h4>
                             <div class="row g-3">
+                                <!-- Preferred Country / Region -->
                                 <div class="col-md-6">
                                     <label class="form-label">Preferred Country / Region</label>
-                                    <select class="form-select" name="pref_country">
+                                    <select class="form-select" id="prefCountrySelect" name="prefCountry" required>
                                         <option value="" selected disabled>Select</option>
                                         <option value="any">Any</option>
                                         <option value="saudi">Saudi</option>
@@ -199,9 +200,11 @@ require_login('../login.html'); // Redirect to login if not logged in
                                     </div>
                                     <div class="mt-2 d-none" id="prefCountryExtraContainer"></div>
                                 </div>
+
+                                <!-- Preferred Ethnicity -->
                                 <div class="col-md-6">
                                     <label class="form-label">Preferred Ethnicity</label>
-                                    <select class="form-select" name="pref_ethnicity">
+                                    <select class="form-select" id="prefEthnicitySelect" name="prefEthnicity" required>
                                         <option value="" selected disabled>Select</option>
                                         <option value="any">All</option>
                                         <option value="arab">Arab</option>
@@ -218,15 +221,15 @@ require_login('../login.html'); // Redirect to login if not logged in
                             <div class="row g-3 mt-3">
                                 <div class="col-md-3">
                                     <label class="form-label">Preferred Min Age</label>
-                                    <input type="number" class="form-control" name="pref_min_age" min="18">
+                                    <input type="number" class="form-control" name="pref_min_age" min="18" required>
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Preferred Max Age</label>
-                                    <input type="number" class="form-control" name="pref_max_age" min="18">
+                                    <input type="number" class="form-control" name="pref_max_age" min="18" required>
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Preferred Marital Status</label>
-                                    <select class="form-select" name="pref_marital">
+                                    <select class="form-select" name="pref_marital" required>
                                         <option value="" selected disabled>Select</option>
                                         <option value="single">Single</option>
                                         <option value="divorced">Divorced</option>
@@ -235,7 +238,7 @@ require_login('../login.html'); // Redirect to login if not logged in
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Open to Relocation?</label>
-                                    <select class="form-select" name="pref_relocation">
+                                    <select class="form-select" name="pref_relocation" required>
                                         <option value="" selected disabled>Select</option>
                                         <option value="yes">Yes</option>
                                         <option value="no">No</option>
@@ -246,7 +249,7 @@ require_login('../login.html'); // Redirect to login if not logged in
                             <div class="row g-3 mt-3">
                                 <div class="col-md-3">
                                     <label class="form-label">Preferred Arabic Fluency</label>
-                                    <select class="form-select" name="pref_arabic">
+                                    <select class="form-select" name="pref_arabic" required>
                                         <option value="" selected disabled>Select</option>
                                         <option value="basic">Basic</option>
                                         <option value="intermediate">Intermediate</option>
