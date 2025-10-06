@@ -66,3 +66,9 @@ nav.bg-white .nav-link.logout-link:hover {
 nav.bg-white .nav-link i {
     margin-right: 0.5rem;
 }
+
+.disabled-link {
+    pointer-events: none !important;
+    opacity: 0.5;
+}
+
