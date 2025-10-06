@@ -95,6 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gender.classList.remove('is-invalid');
         femaleDiv.classList.toggle('d-none', gender.value !== 'female');
+        
+        const dressField = femaleDiv.querySelector('select[name="dress"]');
+        if (gender.value === 'female') {
+            dressField.setAttribute('required', 'required');
+        } else {
+            dressField.removeAttribute('required');
+        }
+
 
         currentStep++;
         showStep(currentStep);
