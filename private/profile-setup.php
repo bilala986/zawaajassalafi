@@ -9,6 +9,10 @@ require_login('../login.html'); // Redirect to login if not logged in
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Profile Setup - Zawaaj As-Salafi</title>
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="img/favicon.png">
+        
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/profile-setup.css">
     </head>
@@ -20,7 +24,7 @@ require_login('../login.html'); // Redirect to login if not logged in
                     <p class="text-center text-muted mb-4" style="font-size: 0.9rem;">
                         Answer the questions to help us find the right spouse for you.
                     </p>
-                    <form id="profileSetupForm">
+                    <form id="profileSetupForm" method="post" action="../assets/php/save_profile.php">
 
                         <!-- Progress Bar -->
                         <div class="progress mb-4" style="height: 8px;">
@@ -34,7 +38,7 @@ require_login('../login.html'); // Redirect to login if not logged in
                             <h4>Step 1: Gender</h4>
                             <div class="mb-3">
                                 <label class="form-label">I am a:</label>
-                                <select class="form-select" id="gender" required>
+                                <select class="form-select" id="gender" name="gender" required>
                                     <option value="" selected disabled>Select gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
@@ -78,7 +82,7 @@ require_login('../login.html'); // Redirect to login if not logged in
                                 <!-- Nationality -->
                                 <div class="col-md-6">
                                     <label class="form-label">Nationality</label>
-                                    <select class="form-select" id="nationalitySelect" name="nationality" required required>
+                                    <select class="form-select" id="nationalitySelect" name="nationality" required>
                                         <option value="" selected disabled>Loading...</option>
                                     </select>
                                     <div class="form-check mt-1">
@@ -91,7 +95,7 @@ require_login('../login.html'); // Redirect to login if not logged in
                                 <!-- Languages -->
                                 <div class="col-md-6">
                                     <label class="form-label">Languages</label>
-                                    <select class="form-select" id="languagesSelect" name="languages" required required>
+                                    <select class="form-select" id="languagesSelect" name="languages" required>
                                         <option value="" selected disabled>Loading...</option>
                                     </select>
                                     <div class="form-check mt-1">

@@ -8,6 +8,9 @@ require_login('../login.html');
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dashboard - Zawaaj As-Salafi</title>
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="img/favicon.png">
         
         <!-- Google Font: Reem Kufi -->
         <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -1,3 +1,4 @@
+console.log("✅ profile-setup.js loaded");
 document.addEventListener('DOMContentLoaded', () => {
     const steps = Array.from(document.querySelectorAll('.step'));
     const progressBar = document.getElementById('profileSetupProgress');
@@ -295,7 +296,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form submit
     const form = document.getElementById('profileSetupForm');
     form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Profile setup submitted successfully!');
+        e.preventDefault(); // Stop normal redirect
+
+        const formData = new FormData(form);
+
+        // ✅ Merge Multi-select Extras
+        const mergeExtraFields = (fieldName) => {
+            const main = formData.get(fieldName);
+            const extras = formData.getAll(fieldName + 'Extra[]');
+            const merged = [main, ...extras].filter(Boolean).join(',');
+            formData.set(fieldName, merged);
+            formData.delete(fieldName + 'Extra[]');
+        };
+
+        mergeExtraFields('ethnicity');
+        mergeExtraFields('nationality');
+        mergeExtraFields('languages');
+        mergeExtraFields('prefCountry');
+        mergeExtraFields('prefEthnicity');
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.text())
+        .then(response => {
+            if (response.trim() === "success") {
+                window.location.href = "../private/dashboard.php"; // ✅ Redirect properly
+            } else {
+                alert("❌ Error saving profile: " + response);
+            }
+        })
+        .catch(err => console.error(err));
     });
+
+
+
 });
